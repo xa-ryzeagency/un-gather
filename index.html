@@ -133,7 +133,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
  .ung .hero .rt .lockup{justify-content:flex-end}
  .ung .hero .rt .sub{margin-left:auto}
  .ung .cols{grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
- .ung .stats{grid-template-columns:repeat(3,1fr)}
+ .ung .stats{grid-template-columns:repeat(2,1fr)}
  .ung .who{grid-template-columns:1fr 1fr;gap:56px}
  .ung .sec{padding:96px 0}
 }
@@ -148,7 +148,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
  .ung .card.wide>h3{align-self:end;margin:0}
  .ung .card.wide>.hint{align-self:start;margin:4px 0 0}
  .ung .card.wide>form,.ung .card.wide>.thanks{grid-column:2;grid-row:1 / span 2}
- .ung .card.wide form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px 14px;align-items:end}
+ .ung .card.wide form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px 14px;align-items:end}
  .ung .card.wide form label{margin:0}
  .ung .card.wide form .err,.ung .card.wide form .trust{grid-column:1 / -1;margin:2px 0 0}
  .ung .card.wide form .btn{width:auto;white-space:nowrap;min-height:50px}
@@ -206,7 +206,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
        In Virtuous, set the form's confirmation redirect to: https://www.gathereverywhere.com/forms/host?gather27_signup_referral=unkown-nations
        Keep the hidden utm_* fields (or map them to Virtuous custom fields). -->
   <form id="hostForm" data-form="Gather27 host" data-redirect="host" action="#" method="post">
-   <input type="hidden" name="virtuous_tag" value="Gather27 host"><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="page_url" value="">
+   <input type="hidden" name="virtuous_tag" value="Gather27 host"><input type="hidden" name="_subject" value="New Gather27 host sign-up (gather.ryzeagency.com)"><input type="hidden" name="_cc" value="connor.comiskey@unknownnations.com"><input type="hidden" name="_template" value="table"><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="page_url" value="">
    <label for="h-fn">First name<input id="h-fn" name="first_name" type="text" required autocomplete="given-name"></label>
    <label for="h-em">Email<input id="h-em" name="email" type="email" required autocomplete="email" inputmode="email"></label>
    <label for="h-ch">Church or group <i>(optional)</i><input id="h-ch" name="church_group" type="text" autocomplete="organization"></label>
@@ -242,9 +242,10 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
   <!-- VIRTUOUS FORM: Gather27 prayer -->
   <!-- Replace the fallback form below with the Virtuous embed code for the form tagged "Gather27 prayer". No redirect: it stays on this page. -->
   <form id="prayForm" data-form="Gather27 prayer" action="#" method="post">
-   <input type="hidden" name="virtuous_tag" value="Gather27 prayer"><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="page_url" value="">
+   <input type="hidden" name="virtuous_tag" value="Gather27 prayer"><input type="hidden" name="_subject" value="New Gather27 prayer sign-up (gather.ryzeagency.com)"><input type="hidden" name="_cc" value="connor.comiskey@unknownnations.com"><input type="hidden" name="_template" value="table"><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="page_url" value="">
    <label for="p-fn">First name<input id="p-fn" name="first_name" type="text" required autocomplete="given-name"></label>
    <label for="p-em">Email<input id="p-em" name="email" type="email" required autocomplete="email" inputmode="email"></label>
+   <label for="p-ph">Mobile <i>(optional)</i><input id="p-ph" name="mobile_phone" type="tel" autocomplete="tel" inputmode="tel"></label>
    <p class="err" role="alert" aria-live="assertive"></p>
    <button class="btn primary block" type="submit">Count me in <span aria-hidden="true">&rarr;</span></button>
    <p class="trust"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" style="vertical-align:-1px"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> We'll only email you about Gather27 and Unknown Nations. Unsubscribe anytime.</p>
@@ -259,8 +260,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
  <div class="in"><h2 id="h-why">Why it matters</h2>
   <div class="stats">
    <div class="stat" tabindex="0"><img class="bg" src="assets/card-1.jpg" alt="" width="900" height="600" loading="lazy" decoding="async"><b>4,849</b><p>Christians were killed for their faith in the past year.</p><small>Open Doors, 2026</small></div>
-   <div class="stat" tabindex="0"><img class="bg" src="assets/card-2.jpg" alt="" width="900" height="600" loading="lazy" decoding="async"><b>5.5B</b><p>people don't yet know Jesus.</p></div>
-   <div class="stat" tabindex="0"><img class="bg" src="assets/card-3.jpg" alt="" width="900" height="600" loading="lazy" decoding="async"><b>3.5B</b><p>live in unreached people groups, often with no church, no believer to ask and no Bible in their own language.</p></div>
+   <div class="stat" tabindex="0"><img class="bg" src="assets/card-3.jpg" alt="" width="900" height="600" loading="lazy" decoding="async"><b>3.5B</b><p>people lack access to the gospel. No church. No believer in their village. No one to tell them about Jesus.</p></div>
   </div>
   <div class="split"><a class="btn primary" href="#host" data-cta="why_host">Host a watch party</a><a class="btn outline" href="#pray" data-cta="why_pray">Pray with us</a></div>
  </div>
@@ -305,11 +305,11 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
 (function(){
  /* ===== CONFIG: fill these in (see README). Leave as-is to keep tracking off. ===== */
  var CFG={
-  ga4:'G-XXXXXXXXXX',               // GA4 measurement ID (skip if already in Squarespace Code Injection)
+  ga4:'G-LG7SXQ1JHZ',              // GA4 measurement ID (skip if already in Squarespace Code Injection)
   pixel:'XXXXXXXXXXXXXXX',          // Meta pixel ID (skip if already in Squarespace Code Injection)
   gatherHost:'https://www.gathereverywhere.com/forms/host?gather27_signup_referral=unkown-nations',
-  hostEndpoint:'',                  // fallback form only: URL that accepts the host form POST (leave '' when using the Virtuous embed)
-  prayEndpoint:'',                  // fallback form only: same for the prayer form
+  hostEndpoint:'https://formsubmit.co/ajax/will.belliel@unknownnations.com',                  // fallback form only: URL that accepts the host form POST (leave '' when using the Virtuous embed)
+  prayEndpoint:'https://formsubmit.co/ajax/will.belliel@unknownnations.com',                  // fallback form only: same for the prayer form
   redirectDelay:900
  };
  var root=document.getElementById('ung-gather');if(!root)return;
@@ -354,7 +354,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
     track('generate_lead',{form_name:name,virtuous_tag:name,utm_source:saved.utm_source||'',utm_campaign:saved.utm_campaign||''},'Lead');
     if(host){setTimeout(function(){track('gather_redirect',{form_name:name});location.href=CFG.gatherHost},CFG.redirectDelay)}
    };
-   if(ep){fetch(ep,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data}).then(function(r){if(!r.ok)throw 0;finish()}).catch(function(){err.textContent='Something went wrong. Please try again.';err.style.display='block'})}
+   if(ep){fetch(ep,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},body:data}).then(function(r){if(!r.ok)throw 0;finish()}).catch(function(){err.textContent='Something went wrong. Please try again.';err.style.display='block'})}
    else{finish()} /* no endpoint set: preview only. The Virtuous embed replaces this form in production. */
   });
  });
