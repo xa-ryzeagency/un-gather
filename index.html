@@ -148,10 +148,11 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
  .ung .card.wide>h3{align-self:end;margin:0}
  .ung .card.wide>.hint{align-self:start;margin:4px 0 0}
  .ung .card.wide>form,.ung .card.wide>.thanks{grid-column:2;grid-row:1 / span 2}
- .ung .card.wide form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px 14px;align-items:end}
+ .ung .card.wide form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;align-items:end}
  .ung .card.wide form label{margin:0}
  .ung .card.wide form .err,.ung .card.wide form .trust{grid-column:1 / -1;margin:2px 0 0}
- .ung .card.wide form .btn{width:auto;white-space:nowrap;min-height:50px}
+ .ung .card.wide form .btn{width:100%;white-space:nowrap;min-height:50px;grid-column:1 / -1}
+ .ung .card.wide.done form{display:none}
 }
 .ung .who-logo{display:block;width:230px;height:auto;margin:0 0 22px;opacity:.9}
 </style>
@@ -200,7 +201,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
  </div>
  <div class="card" id="hostCard">
   <h3>Tell us you're hosting</h3>
-  <p class="hint">Two fields, then we take you to Gather to register.</p>
+  <p class="hint">A few quick fields, then we take you to Gather to register.</p>
   <!-- VIRTUOUS FORM: Gather27 host -->
   <!-- Replace the fallback form below with the Virtuous embed code for the form tagged "Gather27 host".
        In Virtuous, set the form's confirmation redirect to: https://www.gathereverywhere.com/forms/host?gather27_signup_referral=unkown-nations
@@ -208,6 +209,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
   <form id="hostForm" data-form="Gather27 host" data-redirect="host" action="#" method="post">
    <input type="hidden" name="virtuous_tag" value="Gather27 host"><input type="hidden" name="_subject" value="New Gather27 host sign-up (gather.ryzeagency.com)"><input type="hidden" name="_cc" value="connor.comiskey@unknownnations.com"><input type="hidden" name="_template" value="table"><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="page_url" value="">
    <label for="h-fn">First name<input id="h-fn" name="first_name" type="text" required autocomplete="given-name"></label>
+   <label for="h-ln">Last name<input id="h-ln" name="last_name" type="text" required autocomplete="family-name"></label>
    <label for="h-em">Email<input id="h-em" name="email" type="email" required autocomplete="email" inputmode="email"></label>
    <label for="h-ch">Church or group <i>(optional)</i><input id="h-ch" name="church_group" type="text" autocomplete="organization"></label>
    <p class="err" role="alert" aria-live="assertive"></p>
@@ -227,7 +229,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
   <ul class="pr-list">
    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9D2B25" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span><b>Short.</b> A few minutes, once a week, in your inbox.</span></li>
    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9D2B25" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span><b>Specific.</b> One people group at a time, where there is no church and following Jesus can cost everything.</span></li>
-   <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9D2B25" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span><b>Free.</b> Just your first name and email.</span></li>
+   <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9D2B25" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span><b>Free.</b> Just your name, email and mobile.</span></li>
   </ul>
 
  </div>
@@ -244,8 +246,9 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
   <form id="prayForm" data-form="Gather27 prayer" action="#" method="post">
    <input type="hidden" name="virtuous_tag" value="Gather27 prayer"><input type="hidden" name="_subject" value="New Gather27 prayer sign-up (gather.ryzeagency.com)"><input type="hidden" name="_cc" value="connor.comiskey@unknownnations.com"><input type="hidden" name="_template" value="table"><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="page_url" value="">
    <label for="p-fn">First name<input id="p-fn" name="first_name" type="text" required autocomplete="given-name"></label>
+   <label for="p-ln">Last name<input id="p-ln" name="last_name" type="text" required autocomplete="family-name"></label>
    <label for="p-em">Email<input id="p-em" name="email" type="email" required autocomplete="email" inputmode="email"></label>
-   <label for="p-ph">Mobile <i>(optional)</i><input id="p-ph" name="mobile_phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+   <label for="p-ph">Mobile<input id="p-ph" name="mobile_phone" type="tel" required autocomplete="tel" inputmode="tel"></label>
    <p class="err" role="alert" aria-live="assertive"></p>
    <button class="btn primary block" type="submit">Count me in <span aria-hidden="true">&rarr;</span></button>
    <p class="trust"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" style="vertical-align:-1px"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> We'll only email you about Gather27 and Unknown Nations. Unsubscribe anytime.</p>
@@ -295,7 +298,7 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
 
 <div class="foot">
  <div class="in"><img src="assets/un-logo-white.png" alt="Unknown Nations" width="178" height="20">
-  <div class="lines"><a href="https://unknownnations.com/privacy-policy">Privacy policy</a><a href="https://unknownnations.com/contact">Contact</a><span>&copy; Unknown Nations</span></div></div>
+  <div class="lines"><a href="https://unknownnations.com/privacy-policy">Privacy policy</a><span>&copy; Unknown Nations</span></div></div>
 </div>
 
 <div class="sticky" id="ungSticky"><a class="btn primary" href="#host" data-cta="sticky_host">Host a watch party</a><a class="btn outline" href="#pray" data-cta="sticky_pray">Pray with us</a></div>
@@ -345,7 +348,9 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
    var err=$('.err',f),em=f.elements.email,fn=f.elements.first_name;
    err.style.display='none';
    if(!fn.value.trim()){err.textContent='Please add your first name.';err.style.display='block';fn.focus();return}
+   var ln=f.elements.last_name;if(ln&&!ln.value.trim()){err.textContent='Please add your last name.';err.style.display='block';ln.focus();return}
    if(!em.validity.valid||!em.value.trim()){err.textContent='Please enter a valid email address.';err.style.display='block';em.focus();return}
+   var ph=f.elements.mobile_phone;if(ph&&ph.required&&ph.value.replace(/\D/g,'').length<10){err.textContent='Please enter your mobile number.';err.style.display='block';ph.focus();return}
    var host=f.getAttribute('data-redirect')==='host',ep=host?CFG.hostEndpoint:CFG.prayEndpoint;
    var data=new URLSearchParams(new FormData(f));
    var finish=function(){
