@@ -311,6 +311,8 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
   ga4:'G-LG7SXQ1JHZ',              // GA4 measurement ID (skip if already in Squarespace Code Injection)
   pixel:'XXXXXXXXXXXXXXX',          // Meta pixel ID (skip if already in Squarespace Code Injection)
   gatherHost:'https://www.gathereverywhere.com/forms/host?gather27_signup_referral=unkown-nations',
+  dbEndpoint:'https://lbiepufwyluqhastvwpv.supabase.co/rest/v1/gather_signups', // primary: every sign-up is saved here
+  dbKey:'sb_publishable_4eREJp-Hn_2FGvZZM2-USA_Yu3FN8WV',                        // public (browser) key, insert-only table
   hostEndpoint:'https://formsubmit.co/ajax/will.belliel@unknownnations.com',                  // fallback form only: URL that accepts the host form POST (leave '' when using the Virtuous embed)
   prayEndpoint:'https://formsubmit.co/ajax/will.belliel@unknownnations.com',                  // fallback form only: same for the prayer form
   redirectDelay:900
@@ -359,8 +361,15 @@ font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weigh
     track('generate_lead',{form_name:name,virtuous_tag:name,utm_source:saved.utm_source||'',utm_campaign:saved.utm_campaign||''},'Lead');
     if(host){setTimeout(function(){track('gather_redirect',{form_name:name});location.href=CFG.gatherHost},CFG.redirectDelay)}
    };
-   if(ep){fetch(ep,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},body:data}).then(function(r){if(!r.ok)throw 0;finish()}).catch(function(){err.textContent='Something went wrong. Please try again.';err.style.display='block'})}
-   else{finish()} /* no endpoint set: preview only. The Virtuous embed replaces this form in production. */
+   /* Save every sign-up to the Ryze database first (reliable), then also try the email relay (FormSubmit) in the background. */
+   var rec={form:host?'host':'pray',page:location.href.slice(0,500),extra:{}};
+   data.forEach(function(v,k){if(k==='first_name'||k==='last_name'||k==='email')rec[k]=v;else if(k==='mobile_phone')rec.phone=v;else if(k==='church_group')rec.church=v;else if(k.charAt(0)!=='_')rec.extra[k]=v});
+   ['utm_source','utm_medium','utm_campaign'].forEach(function(k){if(saved[k])rec.extra[k]=saved[k]});
+   var btn=$('button[type=submit]',f);if(btn)btn.disabled=true;
+   fetch(CFG.dbEndpoint,{method:'POST',headers:{'apikey':CFG.dbKey,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(rec)}).then(function(r){
+     if(!r.ok)throw 0;finish();
+     if(ep){try{fetch(ep,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},body:data,keepalive:true}).catch(function(){})}catch(x){}}
+   }).catch(function(){if(btn)btn.disabled=false;err.textContent='Something went wrong. Please try again.';err.style.display='block'}) /* no endpoint set: preview only. The Virtuous embed replaces this form in production. */
   });
  });
  $$('[data-gather-link]').forEach(function(a){a.addEventListener('click',function(){track('gather_redirect',{form_name:'manual_click'})})});
